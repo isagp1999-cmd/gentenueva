@@ -28,7 +28,29 @@
   <div class="header-actions">
     <a class="btn btn-sm" href="https://wa.me/593963464752" target="_blank" rel="noopener">Necesito ayuda</a>
   </div>
+  <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-drawer">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
 </header>
+
+<div class="nav-overlay"></div>
+<aside class="nav-drawer" id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Menú principal" aria-hidden="true">
+  <div class="nav-drawer-head">
+    <button class="nav-close" type="button" aria-label="Cerrar menú">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <nav class="nav-drawer-links" aria-label="Navegación móvil">
+    <a href="index.html" aria-current="page">Inicio</a>
+    <a href="nosotros.html">Quienes Somos</a>
+    <a href="autoevaluacion.html">Autoevaluación</a>
+    <a href="testimonios.html">Testimonios</a>
+    <a href="contacto.html">Encuéntranos</a>
+    <a href="preguntas.html">Preguntas Frecuentes</a>
+  </nav>
+  <a class="btn btn-full" href="https://wa.me/593963464752" target="_blank" rel="noopener">Necesito ayuda</a>
+</aside>
+
 
 <main>
 
@@ -144,5 +166,6 @@
   <div class="footer-legal">Grupo Gente Nueva · Alcohólicos Anónimos. Contenido informativo del grupo; no representa a A.A. en su conjunto.</div>
 </footer>
 
+<script src="js/nav.js"></script>
 </body>
 </html>
