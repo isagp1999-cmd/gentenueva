@@ -1,0 +1,13 @@
+# GitHub Pages configuration.
+#
+# The site itself is plain static HTML/CSS/JS at the repository root, with no
+# Liquid templating. Jekyll is enabled purely so that the internal design
+# handoff material below can be kept out of the published site — it stays in
+# the repository for reference, but is never served from the live domain.
+#
+# Anonymity is the central rule of this group's design system, so the chat
+# transcripts and design source must not be publicly fetchable.
+exclude:
+  - chats
+  - project
+  - README.md
