@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reuniones · Grupo Gente Nueva</title>
+<meta name="description" content="Horario de reuniones de Grupo Gente Nueva, Alcohólicos Anónimos en Quito. Lunes a sábado.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="brand">
+    <img src="assets/logo-mark.png" alt="Grupo Gente Nueva">
+    <span class="brand-lockup">
+      <span class="brand-name">Grupo Gente Nueva</span>
+      <span class="brand-sub">Alcohólicos Anónimos</span>
+    </span>
+  </a>
+  <nav class="site-nav">
+    <a href="index.html">Inicio</a>
+    <a href="nosotros.html">Quienes Somos</a>
+    <a href="autoevaluacion.html">Autoevaluación</a>
+    <a href="testimonios.html">Testimonios</a>
+    <a href="contacto.html">Encuéntranos</a>
+    <a href="preguntas.html">Preguntas Frecuentes</a>
+  </nav>
+  <div class="header-actions">
+    <a class="btn btn-sm" href="https://wa.me/593963464752" target="_blank" rel="noopener">Necesito ayuda</a>
+  </div>
+</header>
+
+<main>
+
+  <section style="position:relative;background:var(--surface-dark);padding:64px 32px 48px;overflow:hidden">
+    <div style="position:absolute;inset:0;background-image:url('assets/meetings-room.png');background-size:cover;background-position:center"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(15,18,51,.35), rgba(15,18,51,.92))"></div>
+    <div style="position:relative;max-width:1180px;margin:0 auto">
+      <div class="aa-overline" style="color:var(--text-on-dark-soft);margin-bottom:16px">Grupo Gente Nueva</div>
+      <h1 class="aa-display-xl" style="color:var(--text-on-dark);margin:0;max-width:22ch">Reuniones continuas</h1>
+      <p class="aa-body-lg" style="color:var(--text-on-dark-soft);max-width:44ch;margin-top:16px">El único requisito para ser miembros de Alcohólicos Anónimos es el deseo de dejar la bebida.</p>
+    </div>
+  </section>
+
+  <section class="section-canvas" style="padding:48px 32px">
+    <div class="container" style="padding:0">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:24px">
+        <h2 class="aa-display-md" style="color:var(--text-ink);margin:0">Horario</h2>
+        <span class="aa-caption">Horario local.</span>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px" id="day-tags" role="group" aria-label="Elegir día">
+        <button type="button" class="tag" data-day="0">Lunes</button>
+        <button type="button" class="tag" data-day="1">Martes</button>
+        <button type="button" class="tag" data-day="2">Miércoles</button>
+        <button type="button" class="tag" data-day="3">Jueves</button>
+        <button type="button" class="tag" data-day="4">Viernes</button>
+        <button type="button" class="tag" data-day="5">Sábado</button>
+        <button type="button" class="tag" data-day="6">Domingo</button>
+      </div>
+      <div style="border-bottom:1px solid var(--border-hairline)">
+        <div id="no-meeting-text" style="padding:48px 0;text-align:center;display:none" class="aa-body-md"></div>
+      </div>
+    </div>
+    <div style="width:100%;text-align:left;display:grid;grid-template-columns:120px 1fr 220px 150px;align-items:center;gap:24px;padding:20px 8px;border-top:1px solid var(--border-hairline)" id="meeting-row">
+      <div class="aa-data" style="color:var(--text-ink)" id="meeting-time"></div>
+      <div>
+        <div class="aa-title-md" style="color:var(--text-ink)" id="meeting-name"></div>
+        <div class="aa-body-sm" style="color:var(--text-muted)" id="meeting-format"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-soft" style="padding:48px 32px">
+    <div class="container" style="padding:0">
+      <div class="card" style="padding:32px">
+        <p class="aa-body-md" style="margin:0;color:var(--text-body);text-align:center">Las reuniones están dirigidas a todas las personas que tienen un interés en el programa de recuperación del alcoholismo de Alcohólicos Anónimos. Personas no alcohólicas pueden asistir a las reuniones abiertas como observadores.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-col" style="gap:16px">
+      <p style="font-size:var(--size-body-sm);color:var(--text-muted);max-width:30ch;margin:0">Línea de ayuda: +593 963464752</p>
+      <p style="font-size:var(--size-body-sm);color:var(--text-muted);max-width:30ch;margin:0">Dirección: Av. 12 de octubre y Roca, edificio Mariana de Jesús, piso 7.</p>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <p style="font-size:var(--size-body-sm);color:var(--text-muted);margin:0"><span style="color:var(--text-ink)">Lunes a viernes:</span> 18:00 – 19:30</p>
+        <p style="font-size:var(--size-body-sm);color:var(--text-muted);margin:0"><span style="color:var(--text-ink)">Sábados:</span> 10:00 – 11:30</p>
+      </div>
+    </div>
+    <div class="footer-col">
+      <span class="footer-col-title">Reuniones</span>
+      <a href="reuniones.html">Horarios</a>
+      <a href="contacto.html">Ubicación</a>
+      <a href="preguntas.html">Preguntas frecuentes</a>
+    </div>
+    <div class="footer-col">
+      <span class="footer-col-title">El grupo</span>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="testimonios.html">Testimonios</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+  </div>
+  <div class="footer-legal">Grupo Gente Nueva · Alcohólicos Anónimos. Contenido informativo del grupo; no representa a A.A. en su conjunto.</div>
+</footer>
+
+<script src="js/reuniones.js"></script>
+</body>
+</html>
