@@ -1,0 +1,5 @@
+/* Source Serif 4 (display) + Public Sans (text) — Google Fonts substitutes.
+   The provided source artwork used a generic bold grotesque (Arial/Helvetica caps).
+   No licensed brand typeface was supplied; see readme.md > Known gaps. */
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap");
+:root{--font-display:"Source Serif 4",Georgia,"Times New Roman",serif;--font-text:"Public Sans",-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;--font-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace}

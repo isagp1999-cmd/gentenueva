@@ -1,0 +1,23 @@
+:root{
+--size-display-mega:76px;--size-display-xl:58px;--size-display-lg:44px;--size-display-md:34px;--size-display-sm:27px;
+--size-title-lg:22px;--size-title-md:18px;--size-title-sm:16px;
+--size-body-lg:18px;--size-body-md:16px;--size-body-sm:14px;--size-caption:13px;--size-overline:12px;
+--weight-regular:400;--weight-medium:500;--weight-semibold:600;--weight-bold:700;
+--leading-tight:1.04;--leading-snug:1.18;--leading-normal:1.4;--leading-relaxed:1.6;
+--tracking-display:-0.02em;--tracking-normal:0;--tracking-overline:0.09em;
+}
+/* Type roles. Display roles are serif at weight 400 — never bolded. */
+.aa-display-mega{font-family:var(--font-display);font-size:var(--size-display-mega);font-weight:400;line-height:var(--leading-tight);letter-spacing:var(--tracking-display)}
+.aa-display-xl{font-family:var(--font-display);font-size:var(--size-display-xl);font-weight:400;line-height:var(--leading-tight);letter-spacing:var(--tracking-display)}
+.aa-display-lg{font-family:var(--font-display);font-size:var(--size-display-lg);font-weight:400;line-height:var(--leading-snug);letter-spacing:var(--tracking-display)}
+.aa-display-md{font-family:var(--font-display);font-size:var(--size-display-md);font-weight:400;line-height:var(--leading-snug);letter-spacing:var(--tracking-display)}
+.aa-display-sm{font-family:var(--font-display);font-size:var(--size-display-sm);font-weight:400;line-height:var(--leading-snug)}
+.aa-title-lg{font-family:var(--font-text);font-size:var(--size-title-lg);font-weight:600;line-height:1.25}
+.aa-title-md{font-family:var(--font-text);font-size:var(--size-title-md);font-weight:600;line-height:1.33}
+.aa-title-sm{font-family:var(--font-text);font-size:var(--size-title-sm);font-weight:600;line-height:1.25}
+.aa-body-lg{font-family:var(--font-text);font-size:var(--size-body-lg);font-weight:400;line-height:var(--leading-relaxed)}
+.aa-body-md{font-family:var(--font-text);font-size:var(--size-body-md);font-weight:400;line-height:var(--leading-relaxed)}
+.aa-body-sm{font-family:var(--font-text);font-size:var(--size-body-sm);font-weight:400;line-height:1.55}
+.aa-caption{font-family:var(--font-text);font-size:var(--size-caption);font-weight:400;line-height:1.5;color:var(--text-muted)}
+.aa-overline{font-family:var(--font-text);font-size:var(--size-overline);font-weight:600;line-height:1.4;letter-spacing:var(--tracking-overline);text-transform:uppercase}
+.aa-data{font-family:var(--font-mono);font-size:var(--size-body-md);font-weight:500;line-height:1.4;font-variant-numeric:tabular-nums}

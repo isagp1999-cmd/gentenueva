@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/grupo-gente-nueva-design-system-6cf7e7fd-57d9-4e9c-adc5-793caf748f83/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/grupo-gente-nueva-design-system-6cf7e7fd-57d9-4e9c-adc5-793caf748f83/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/grupo-gente-nueva-design-system-6cf7e7fd-57d9-4e9c-adc5-793caf748f83/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/grupo-gente-nueva-design-system-6cf7e7fd-57d9-4e9c-adc5-793caf748f83/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/grupo-gente-nueva-design-system-6cf7e7fd-57d9-4e9c-adc5-793caf748f83/tokens/shape.css">
+  <link rel="stylesheet" href="_ds/grupo-gente-nueva-design-system-6cf7e7fd-57d9-4e9c-adc5-793caf748f83/tokens/elevation.css">
+  <link rel="stylesheet" href="_ds/grupo-gente-nueva-design-system-6cf7e7fd-57d9-4e9c-adc5-793caf748f83/tokens/base.css">
+  <link rel="stylesheet" href="_ds/grupo-gente-nueva-design-system-6cf7e7fd-57d9-4e9c-adc5-793caf748f83/styles.css">
+  <script src="_ds/grupo-gente-nueva-design-system-6cf7e7fd-57d9-4e9c-adc5-793caf748f83/_ds_bundle.js"></script>
+  <style>
+    body{margin:0;background:var(--surface-canvas)}
+    a{color:var(--color-link)}
+    a:hover{color:var(--color-link-hover)}
+  </style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:var(--surface-canvas)">
+
+  <header style="height:76px;display:flex;align-items:center;gap:var(--space-8);padding:0 var(--container-pad);background:var(--surface-canvas);border-bottom:1px solid var(--border-hairline)">
+    <a href="#" onClick="{{ goHomeNav }}" style="display:flex;align-items:center;gap:var(--space-3);text-decoration:none">
+      <img src="./assets/logo-mark.png" alt="Grupo Gente Nueva" style="height:44px;width:44px;object-fit:contain">
+      <span style="display:flex;flex-direction:column;line-height:1.1;font-family:var(--font-text)">
+        <span style="font-size:15px;font-weight:700;letter-spacing:.02em;color:var(--text-ink)">Grupo Gente Nueva</span>
+        <span style="font-size:12px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted)">Alcohólicos Anónimos</span>
+      </span>
+    </a>
+    <nav style="display:flex;gap:var(--space-5);margin-left:auto">
+      <sc-for list="{{ navLinks }}" as="lnk" hint-placeholder-count="7">
+        <a href="#" onClick="{{ lnk.onClick }}" style="font-family:var(--font-text);font-size:14px;font-weight:{{ lnk.weight }};color:{{ lnk.color }};text-decoration:none;padding-bottom:2px;border-bottom:{{ lnk.border }};white-space:nowrap">{{ lnk.label }}</a>
+      </sc-for>
+    </nav>
+    <div style="display:flex;align-items:center;gap:var(--space-3)">
+      <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Button" size="sm" onClick="{{ openWhatsapp }}" hint-size="auto,36px">{{ helpCta }}</x-import>
+    </div>
+  </header>
+
+  <main style="flex:1">
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+    <section style="background:var(--surface-dark)" data-screen-label="Home">
+      <div style="width:100%;height:320px;overflow:hidden">
+        <img src="./assets/hero-hands.png" alt="Grupo mirando el atardecer, de espaldas" style="width:100%;height:100%;object-fit:cover;display:block">
+      </div>
+      <div style="padding:64px 32px 96px">
+    <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center">
+        <div>
+          <div class="aa-overline" style="color:var(--text-on-dark-soft);margin-bottom:16px;font-size:18px">{{ homeEyebrow }}</div>
+          <h1 class="aa-display-xl" style="color:var(--text-on-dark);margin:0;max-width:22ch;font-size:calc(var(--size-display-xl, 4rem) - 2pt)">{{ homeTitleLine1 }}<br>{{ homeTitleLine2 }}</h1>
+          
+          <p class="aa-body-lg" style="color:var(--text-on-dark-soft);max-width:42ch;margin-top:24px">{{ homeLede }}</p><div style="display:flex;gap:16px;margin-top:32px;flex-wrap:wrap">
+            
+            <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Button" size="lg" variant="outline-on-dark" onClick="{{ openWhatsapp }}" hint-size="180px,52px">{{ helpCta }}</x-import>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:center;align-items:center">
+          <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Card" tone="dark" padding="32px" hint-size="100%,220px">
+            <div class="aa-overline" style="color:var(--text-on-dark-soft);margin-bottom:16px">{{ dailyReflectionLabel }}</div>
+            <p class="aa-body-md" style="color: var(--navy-050); margin: 0">{{ dailyReflectionBody }}</p>
+          </x-import>
+        </div>
+      </div>
+      <div style="max-width:1180px;margin:64px auto 0">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+          <sc-for list="{{ homeStats }}" as="stat" hint-placeholder-count="3">
+            
+          </sc-for>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    
+
+    <section style="background:var(--surface-soft);padding:64px 32px" data-screen-label="Home schedule preview">
+      <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center">
+        <div>
+          <div class="aa-overline" style="color:var(--text-muted);margin-bottom:8px">{{ homeScheduleEyebrow }}</div>
+          <h2 class="aa-display-md" style="color:var(--text-ink);margin:0">{{ homeScheduleTitle }}</h2>
+          <div style="margin-top:24px;display:flex;flex-direction:column">
+            <sc-for list="{{ weekSummary }}" as="row" hint-placeholder-count="2">
+              <div style="display:flex;justify-content:space-between;padding:16px 0;border-top:1px solid var(--border-hairline)">
+                <span class="aa-body-md" style="color:var(--text-ink)">{{ row.days }}</span>
+                <span class="aa-data" style="color:var(--text-ink)">{{ row.hours }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="margin-top:24px">
+            
+          </div>
+        </div>
+        <div style="border:1px solid var(--border-hairline);border-left:3px solid var(--color-primary);border-radius:var(--radius-md);padding:var(--space-5) var(--space-6);background:var(--surface-canvas)">
+          <div style="font-family:var(--font-text);font-size:var(--size-title-sm);font-weight:600;color:var(--text-brand);margin-bottom:4px">{{ calloutAnonTitle }}</div>
+          <div style="font-size:var(--size-body-sm);color:var(--text-body)">{{ calloutAnonBody }}</div>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:var(--surface-canvas);padding:0 32px 64px" data-screen-label="Home about preview">
+      <div style="max-width:820px;margin:0 auto;text-align:center">
+        <img src="./assets/aa-emblem.png" alt="Emblema Grupo Gente Nueva" style="height:96px;width:96px;object-fit:contain;margin:0 auto 16px;display:block">
+        <h2 class="aa-display-md" style="color:var(--text-ink);margin:0">{{ aboutTitle }}</h2>
+        <p class="aa-body-lg" style="color:var(--text-body);margin-top:24px;border:1px solid var(--border-hairline);border-radius:var(--radius-lg);padding:32px">{{ aboutLede }}</p>
+        <div style="margin-top:24px">
+          <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Button" size="md" variant="outline" onClick="{{ goNosotros }}" hint-size="auto,44px">{{ ctaAboutMore }}</x-import>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:var(--surface-soft);padding:64px 32px" data-screen-label="Home autoeval preview">
+      <div style="max-width:720px;margin:0 auto;text-align:center">
+        <h2 class="aa-display-sm" style="color:var(--text-ink);margin:0">{{ autoTitle }}</h2>
+        <p class="aa-body-lg" style="color:var(--text-muted);margin-top:12px">{{ autoSubtitle }}</p>
+        <p class="aa-body-md" style="color:var(--text-body);margin-top:24px">{{ autoIntro }}</p>
+        <div style="margin-top:32px;text-align:left">
+          
+        </div>
+        <div style="margin-top:32px">
+          <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Button" size="lg" onClick="{{ goAutodiagnostico }}" hint-size="260px,52px">{{ ctaAutoStart }}</x-import>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:var(--surface-dark);padding:64px 32px" data-screen-label="Home closing CTA">
+      <div style="max-width:640px;margin:0 auto;text-align:center">
+        <h2 class="aa-display-md" style="color:var(--text-on-dark);margin:0">{{ homeClosingTitle }}</h2>
+        <p class="aa-body-lg" style="color: var(--text-on-dark-soft); margin-top: 16px; position: relative">{{ homeClosingLede }}</p>
+        <div style="margin-top:32px;display:flex;justify-content:center;flex-wrap:wrap;gap:16px">
+          <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Button" size="lg" onClick="{{ goPreguntas }}" hint-size="220px,52px">{{ ctaFaq }}</x-import>
+        </div>
+        <p class="aa-body-sm" style="color:var(--text-on-dark-soft);margin-top:16px">{{ footerAddress }}</p>
+        <div style="margin-top:24px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap;align-items:center">
+          <sc-for list="{{ contactFacts }}" as="fact" hint-placeholder-count="1">
+            <a href="{{ waLink }}" target="_blank" rel="noopener" class="aa-data" style="display:inline-block;color:var(--text-on-dark);background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:100px;padding:12px 28px;font-size:18px;text-decoration:none">{{ fact.v }}</a>
+          </sc-for>
+          <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Button" size="lg" variant="outline-on-dark" onClick="{{ openWhatsapp }}" hint-size="180px,52px">{{ helpCta }}</x-import>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ isReuniones }}" hint-placeholder-val="{{ false }}">
+    <section style="position:relative;background:var(--surface-dark);padding:64px 32px 48px;overflow:hidden" data-screen-label="Meetings hero">
+      <div style="position:absolute;inset:0;background-image:url('./assets/meetings-room.png');background-size:cover;background-position:center"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(15,18,51,.35), rgba(15,18,51,.92))"></div>
+      <div style="position:relative;max-width:1180px;margin:0 auto">
+        <div class="aa-overline" style="color:var(--text-on-dark-soft);margin-bottom:16px">{{ eyebrowGroup }}</div>
+        <h1 class="aa-display-xl" style="color:var(--text-on-dark);margin:0;max-width:22ch">{{ meetingsTitle }}</h1>
+        <p class="aa-body-lg" style="color:var(--text-on-dark-soft);max-width:44ch;margin-top:16px">{{ meetingsLede }}</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px">
+          <sc-for list="{{ homeStats }}" as="stat" hint-placeholder-count="3">
+            
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:var(--surface-canvas);padding:48px 32px" data-screen-label="Meetings schedule">
+      <div style="max-width:1180px;margin:0 auto">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:24px">
+          <h2 class="aa-display-md" style="color:var(--text-ink);margin:0">{{ scheduleTitle }}</h2>
+          <span class="aa-caption">{{ scheduleNote }}</span>
+        </div>
+        <div style="max-width:320px;margin-bottom:24px">
+          
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px">
+          <sc-for list="{{ dayTags }}" as="tag" hint-placeholder-count="7">
+            <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Tag" selected="{{ tag.selected }}" onClick="{{ tag.onClick }}" hint-size="80px,36px">{{ tag.label }}</x-import>
+          </sc-for>
+        </div>
+        <div style="border-bottom:1px solid var(--border-hairline)">
+          <sc-if value="{{ hasDayMeeting }}" hint-placeholder-val="{{ true }}">
+            
+          </sc-if>
+          <sc-if value="{{ hasNoDayMeeting }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:48px 0;text-align:center" class="aa-body-md">{{ noMeetingsText }}</div>
+          </sc-if>
+        </div>
+      </div><div style="width:100%;text-align:left;display:grid;grid-template-columns:120px 1fr 220px 150px;align-items:center;gap:24px;padding:20px 8px;border-top:1px solid var(--border-hairline)">
+              <div class="aa-data" style="color:var(--text-ink)">{{ dayMeeting.time }}</div>
+              <div>
+                <div class="aa-title-md" style="color:var(--text-ink)">{{ dayMeeting.name }}</div>
+                <div class="aa-body-sm" style="color:var(--text-muted)">{{ dayMeeting.format }} · {{ dayMeeting.dur }}</div>
+              </div>
+            </div>
+    </section>
+
+    <section style="background:var(--surface-soft);padding:48px 32px" data-screen-label="Meetings open vs closed">
+      <div style="max-width:1180px;margin:0 auto">
+        <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Card" padding="32px" hint-size="100%,140px">
+          <p class="aa-body-md" style="margin:0;color:var(--text-body);text-align:center">{{ openBody }}</p>
+        </x-import>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ isNosotros }}" hint-placeholder-val="{{ false }}">
+    
+
+    <section style="position:relative;min-height:600px;display:flex;align-items:center;justify-content:center;background-image:url('./assets/about-image.png');background-size:cover;background-position:center;padding:24px" data-screen-label="About hero">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,18,51,.25) 0%,rgba(15,18,51,.85) 100%)"></div>
+      <div style="position:relative;max-width:650px;width:100%;background:rgba(15,18,51,.55);backdrop-filter:blur(6px);border-radius:24px;box-shadow:0 4px 14px rgba(15,18,51,.07);padding:48px;text-align:center">
+        <img src="./assets/logo-mark.png" alt="Grupo Gente Nueva" style="height: 122px; width: 174px; object-fit: contain; margin: 0 auto 18px; display: block">
+        
+        
+        <p class="aa-body-lg" style="color:var(--text-on-dark);margin-top:16px;text-align:justify">{{ aboutLede }}</p>
+      </div>
+    </section><section style="background:var(--surface-soft);padding:48px 32px" data-screen-label="Twelve Steps">
+      <div style="max-width:1180px;margin:0 auto">
+        <h2 class="aa-display-md" style="color:var(--text-ink);margin:0 0 16px">{{ stepsTitle }}</h2>
+        <p class="aa-body-md" style="max-width:68ch;color:var(--text-body);margin:0">{{ stepsLede }}</p>
+        <div style="margin-top:32px;display:flex;flex-direction:column">
+          <sc-for list="{{ stepsList }}" as="step" hint-placeholder-count="12">
+            <div style="display: flex; gap: 24px; padding: 16px 0; border-top: 1px solid var(--border-hairline); position: relative">
+              <span class="aa-data" style="color:var(--text-brand)">{{ step.n }}</span><p style="margin: 0">{{ step.text }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+    <section style="background:var(--surface-canvas);padding:48px 32px 64px" data-screen-label="Twelve Traditions">
+      <div style="max-width:1180px;margin:0 auto">
+        <h2 class="aa-display-md" style="color:var(--text-ink);margin:0 0 16px">{{ traditionsTitle }}</h2>
+        <p class="aa-body-md" style="max-width:68ch;color:var(--text-body);margin:0">{{ traditionsLede }}</p>
+        <div style="margin-top:32px;display:flex;flex-direction:column">
+          <sc-for list="{{ traditionsList }}" as="trad" hint-placeholder-count="12">
+            <div style="display: flex; gap: 24px; padding: 16px 0; border-top: 1px solid var(--border-hairline); position: relative">
+              <span class="aa-data" style="color:var(--text-brand)">{{ trad.n }}</span><p style="margin: 0">{{ trad.text }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+  </sc-if>
+
+  <sc-if value="{{ isPreguntas }}" hint-placeholder-val="{{ false }}">
+    <section style="background:var(--surface-canvas);padding:64px 32px 48px" data-screen-label="FAQ hero">
+      <div style="max-width:1180px;margin:0 auto">
+        <div class="aa-overline" style="color:var(--text-muted);margin-bottom:16px">{{ eyebrowFaq }}</div>
+        <h1 class="aa-display-xl" style="color:var(--text-ink);margin:0;max-width:22ch">{{ faqTitle }}</h1>
+        <p class="aa-body-lg" style="color:var(--text-body);max-width:56ch;margin-top:16px">{{ faqLede }}</p>
+      </div>
+    </section>
+    <section style="background:var(--surface-soft);padding:0 32px 64px" data-screen-label="FAQ list">
+      <div style="max-width:820px;margin:0 auto;display:flex;flex-direction:column">
+        <sc-for list="{{ faqList }}" as="faq" hint-placeholder-count="6">
+          <div style="padding:24px 0;border-top:1px solid var(--border-hairline)">
+            <h3 class="aa-title-lg" style="color:var(--text-ink);margin:0 0 8px">{{ faq.q }}</h3>
+            <p class="aa-body-md" style="color:var(--text-body);margin:0">{{ faq.a }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ isUbicacion }}" hint-placeholder-val="{{ false }}">
+    <section style="background: var(--surface-dark); padding: 64px 32px 96px; position: relative" data-screen-label="Contact hero">
+      <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:start">
+        <div>
+          <div class="aa-overline" style="color:var(--text-on-dark-soft);margin-bottom:16px">{{ eyebrowHelp }}</div>
+          <h1 class="aa-display-xl" style="color:var(--text-on-dark);margin:0">{{ contactTitle }}</h1>
+          <p class="aa-body-lg" style="color:var(--text-on-dark-soft);max-width:44ch;margin-top:24px">{{ contactLede }}</p>
+          <div style="display:flex;gap:16px;margin-top:32px;flex-wrap:wrap">
+            
+            
+          </div>
+          <div style="display:flex;gap:24px;margin-top:40px;flex-wrap:wrap">
+            <sc-for list="{{ contactFacts }}" as="fact" hint-placeholder-count="3">
+              <div>
+                
+                <div class="aa-data" style="display:inline-block;color:var(--text-on-dark);margin-top:6px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:100px;padding:12px 28px;font-size:18px">{{ fact.v }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Card" tone="dark" padding="32px" elevated="{{ true }}" hint-size="100%,480px">
+          <h2 class="aa-display-sm" style="color:var(--text-on-dark);margin:0 0 24px">{{ formTitle }}</h2>
+          <div style="display:flex;flex-direction:column;gap:20px">
+            <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Input" onDark="{{ true }}" label="{{ labelFirstName }}" placeholder="{{ placeholderFirstName }}" hint-size="100%,72px"></x-import>
+            <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Input" onDark="{{ true }}" label="{{ labelContact }}" placeholder="{{ phonePlaceholder }}" hint-size="100%,72px"></x-import>
+            <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Select" onDark="{{ true }}" label="{{ labelReason }}" options="{{ contactReasons }}" hint-size="100%,72px"></x-import>
+            <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Checkbox" onDark="{{ true }}" label="{{ agreeLabel }}" checked="{{ contactAgree }}" onChange="{{ toggleAgree }}" hint-size="100%,44px"></x-import>
+            <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Button" fullWidth="{{ true }}" disabled="{{ sendDisabled }}" onClick="{{ sendMessage }}" hint-size="100%,48px">{{ ctaSend }}</x-import>
+            <sc-if value="{{ contactSent }}" hint-placeholder-val="{{ false }}">
+              <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Toast" message="{{ sentMessage }}" onClose="{{ closeToast }}" hint-size="100%,48px"></x-import>
+            </sc-if>
+          </div>
+        </x-import>
+      </div>
+    </section>
+
+    <section style="background:var(--surface-canvas);padding:64px 32px 48px" data-screen-label="Location hero">
+      <div style="max-width:1180px;margin:0 auto">
+        <div class="aa-overline" style="color:var(--text-muted);margin-bottom:16px">{{ eyebrowUbicacion }}</div>
+        <h1 class="aa-display-xl" style="color:var(--text-ink);margin:0;max-width:22ch">{{ ubicacionTitle }}</h1>
+        <p class="aa-body-lg" style="color:var(--text-body);max-width:56ch;margin-top:16px">{{ ubicacionLede }}</p>
+      </div>
+    </section>
+    <section style="background:var(--surface-soft);padding:0 32px 48px" data-screen-label="Map placeholder">
+      <div style="max-width:1180px;margin:0 auto">
+        <a href="https://maps.app.goo.gl/BXwYT7wmc83sm5gm7" target="_blank" rel="noopener" style="display:block;border:1px dashed var(--border-hairline);border-radius:24px;background:var(--surface-canvas);height:320px;overflow:hidden;cursor:pointer">
+          <img src="./captura-de-pantalla-2026-08-17-a-la-s-7--msxwj8ix-evi4.png" alt="captura-de-pantalla-2026-08-17-a-la-s-7-" style="width:100%;height:100%;display:block;object-fit:cover">
+        </a>
+      </div>
+    </section>
+    <section style="background:var(--surface-soft);padding:0 32px 64px" data-screen-label="Finding us cards">
+      <div style="max-width:1180px;margin:0 auto">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+          <sc-for list="{{ findingCards }}" as="fc" hint-placeholder-count="3">
+            <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Card" padding="32px" hint-size="100%,160px">
+              <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Icon" name="{{ fc.icon }}" size="22" color="var(--text-brand)" hint-size="22px,22px"></x-import>
+              <h3 class="aa-title-lg" style="color:var(--text-ink);margin:16px 0 8px">{{ fc.title }}</h3>
+              <p class="aa-body-sm" style="color:var(--text-body);margin:0">{{ fc.body }}</p>
+            </x-import>
+          </sc-for>
+        </div>
+        <div style="margin-top:32px">
+          
+        </div>
+      </div>
+    </section>
+
+    <section style="background:var(--surface-canvas);padding:48px 32px" data-screen-label="Contact anonymity">
+      <div style="max-width:820px;margin:0 auto">
+        <div style="border:1px solid var(--border-hairline);border-left:3px solid var(--color-primary);border-radius:var(--radius-md);padding:var(--space-5) var(--space-6);background:var(--surface-canvas)">
+          <div style="font-family:var(--font-text);font-size:var(--size-title-sm);font-weight:600;color:var(--text-brand);margin-bottom:4px">{{ calloutAnonTitle }}</div>
+          <div style="font-size:var(--size-body-sm);color:var(--text-body)">{{ calloutAnonBody }}</div>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ isBlog }}" hint-placeholder-val="{{ false }}">
+    <section style="position:relative;padding:64px 32px 96px;overflow:hidden" data-screen-label="Blog hero">
+      <div style="position:absolute;inset:0;background-image:url('./assets/blog-sunset.png');background-size:cover;background-position:center"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(15,18,51,.65), rgba(15,18,51,.85))"></div>
+      <div style="position:relative;max-width:1180px;margin:0 auto">
+        <h1 class="aa-display-xl" style="color:var(--text-on-dark);margin:0;max-width:22ch">{{ blogTitle }}</h1>
+        <p class="aa-body-lg" style="color:var(--text-on-dark-soft);max-width:56ch;margin-top:16px">{{ blogLede }}</p>
+
+        <div style="margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+          <sc-for list="{{ blogPosts }}" as="post" hint-placeholder-count="3">
+            <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Card" padding="32px" hint-size="100%,260px" style="background:rgba(255,255,255,.72)">
+              <div class="aa-caption" style="font-family:var(--font-mono)">{{ post.date }}</div>
+              <h3 class="aa-display-sm" style="color:var(--text-ink);margin:12px 0 8px">{{ post.title }}</h3>
+              <p class="aa-body-sm" style="color:var(--text-body);margin:0">{{ post.excerpt }}</p>
+              <div class="aa-title-sm" style="color:var(--text-brand);margin-top:16px">{{ post.author }}</div>
+            </x-import>
+          </sc-for>
+        </div>
+        <div style="margin-top:32px">
+          <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Callout" tone="quiet" title="{{ blogSubmitTitle }}" hint-size="100%,110px">{{ blogSubmitBody }}</x-import>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ isAutodiagnostico }}" hint-placeholder-val="{{ false }}">
+    <section style="position:relative;padding:64px 32px 96px;overflow:hidden" data-screen-label="Autoevaluación">
+      <div style="position:absolute;inset:0;background-image:url('./assets/autoeval-sendero.png');background-size:cover;background-position:center"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(15,18,51,.6), rgba(15,18,51,.85))"></div>
+      <div style="position:relative;max-width:820px;margin:0 auto">
+
+      <sc-if value="{{ autoShowResult }}" hint-placeholder-val="{{ false }}">
+        <h2 class="aa-display-sm" style="color:var(--text-on-dark);margin:0;text-align:center">{{ autoResultTitle }}</h2>
+        <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Card" padding="32px" hint-size="100%,120px">
+          <div style="display:flex;justify-content:center;gap:64px">
+            <div style="text-align:center">
+              <div class="aa-data" style="font-size:var(--size-display-sm);color:var(--text-brand)">{{ autoYesCount }}</div>
+              <div class="aa-overline" style="color:var(--text-muted);margin-top:4px">{{ labelSi }}</div>
+            </div>
+            <div style="text-align:center">
+              <div class="aa-data" style="font-size:var(--size-display-sm);color:var(--text-ink)">{{ autoNoCount }}</div>
+              <div class="aa-overline" style="color:var(--text-muted);margin-top:4px">{{ labelNo }}</div>
+            </div>
+          </div>
+        </x-import>
+
+        <div style="margin-top:32px;display:flex;flex-direction:column;gap:20px">
+          <h3 class="aa-display-xs" style="color:var(--text-on-dark);margin:0">{{ autoResultQ }}</h3>
+          <p class="aa-body-md" style="color:var(--text-on-dark-soft);margin:0">{{ autoResultP1 }}</p>
+          <p class="aa-body-md" style="color:var(--text-on-dark-soft);margin:0">{{ autoResultP2 }}</p>
+          <p class="aa-body-md" style="color:var(--text-on-dark-soft);margin:0">{{ autoResultP3 }}</p>
+        </div>
+
+        <div style="margin-top:40px;display:flex;flex-direction:column;align-items:center;gap:16px">
+          <h3 class="aa-display-xs" style="color:var(--text-on-dark);margin:0">{{ autoNextStepTitle }}</h3>
+          <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Button" onClick="{{ goContacto }}" hint-size="auto,48px">{{ autoNextStepCta }}</x-import>
+          <button onClick="{{ goHome }}" style="background:none;border:none;padding:0;font-family:var(--font-text);font-size:var(--size-body-sm);color:var(--text-on-dark-soft);text-decoration:underline;cursor:pointer">{{ backToTopLabel }}</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ autoShowQuiz }}" hint-placeholder-val="{{ true }}">
+        <h2 class="aa-display-sm" style="color:var(--text-on-dark);margin:0;text-align:center">{{ autoTitle }}</h2>
+        <p class="aa-body-lg" style="color:var(--text-on-dark-soft);margin-top:12px;text-align:center">{{ autoSubtitle }}</p>
+        <p class="aa-body-md" style="color:var(--text-on-dark-soft);margin-top:32px;max-width:68ch;margin-left:auto;margin-right:auto;text-align:center">{{ autoIntro }}</p>
+        <p class="aa-body-sm" style="color:var(--text-on-dark-soft);margin-top:12px;text-align:center">{{ autoAttribution }}</p>
+        <div class="aa-overline" style="color:var(--text-on-dark-soft);margin-top:24px;text-align:center">{{ autoInstruction }}</div>
+
+        <div style="margin-top:40px;display:flex;flex-direction:column;gap:16px">
+          <sc-for list="{{ autoQuestions }}" as="q" hint-placeholder-count="12">
+            <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Card" padding="24px" hint-size="100%,90px" style="background:rgba(255,255,255,.92)">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+                <div style="display:flex;gap:16px;align-items:baseline;flex:1;min-width:240px">
+                  <span class="aa-data" style="color:var(--text-brand)">{{ q.n }}</span>
+                  <p class="aa-body-md" style="margin:0;color:var(--text-ink)">{{ q.text }}</p>
+                </div>
+                <div style="display:flex;gap:20px;flex-shrink:0">
+                  <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Radio" name="{{ q.name }}" label="{{ labelSi }}" checked="{{ q.isYes }}" onChange="{{ q.onYes }}" hint-size="auto,24px"></x-import>
+                  <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Radio" name="{{ q.name }}" label="{{ labelNo }}" checked="{{ q.isNo }}" onChange="{{ q.onNo }}" hint-size="auto,24px"></x-import>
+                </div>
+              </div>
+            </x-import>
+          </sc-for>
+        </div>
+
+        <div style="margin-top:48px;display:flex;justify-content:center">
+          <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Button" onClick="{{ showAutoResult }}" hint-size="auto,48px">{{ viewResultLabel }}</x-import>
+        </div>
+      </sc-if>
+
+      </div>
+    </section>
+
+    <section style="background:var(--surface-dark);padding:96px 32px" data-screen-label="Autodiagnóstico">
+      <div style="max-width:640px;margin:0 auto;text-align:center">
+        <div class="aa-overline" style="color:var(--text-on-dark-soft);margin-bottom:16px">{{ eyebrowAuto }}</div>
+        <h1 class="aa-display-md" style="color:var(--text-on-dark);margin:0">{{ resourceTitle }}</h1>
+        <p class="aa-body-lg" style="color:var(--text-on-dark-soft);margin-top:16px">{{ resourceBody }}</p>
+        <div style="margin-top:32px;display:flex;justify-content:center">
+          <a href="./assets/autodiagnostico-aa.pdf" download="{{ true }}" style="text-decoration:none">
+            <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Button" hint-size="auto,48px">{{ resourceLinkLabel }}</x-import>
+          </a>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  </main>
+
+  <footer style="background:var(--surface-canvas);border-top:1px solid var(--border-hairline);padding:var(--space-10) var(--container-pad) var(--space-8)">
+    <div style="max-width:var(--container-max);margin:0 auto;display:grid;grid-template-columns:1.4fr repeat(2,1fr);gap:var(--space-10)">
+      <div style="display:flex;flex-direction:column;gap:var(--space-4)">
+        <p style="font-size:var(--size-body-sm);color:var(--text-muted);max-width:30ch;margin:0">{{ footerHelpline }}</p>
+        <p style="font-size:var(--size-body-sm);color:var(--text-muted);max-width:30ch;margin:0">{{ footerAddress }}</p>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <sc-for list="{{ weekSummary }}" as="row" hint-placeholder-count="2">
+            <p style="font-size:var(--size-body-sm);color:var(--text-muted);margin:0"><span style="color:var(--text-ink)">{{ row.days }}:</span> {{ row.hours }}</p>
+          </sc-for>
+        </div>
+      </div>
+      <sc-for list="{{ footerCols }}" as="col" hint-placeholder-count="2">
+        <div style="display:flex;flex-direction:column;gap:var(--space-3)">
+          <span style="font-family:var(--font-text);font-size:var(--size-overline);font-weight:600;letter-spacing:var(--tracking-overline);text-transform:uppercase;color:var(--text-ink)">{{ col.title }}</span>
+          <sc-for list="{{ col.links }}" as="lnk" hint-placeholder-count="3">
+            <button onClick="{{ lnk.onClick }}" style="background:none;border:none;padding:0;text-align:left;font-size:var(--size-body-sm);color:var(--text-body);text-decoration:none;cursor:pointer;font-family:var(--font-text)">{{ lnk.label }}</button>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+    <div style="max-width:var(--container-max);margin:var(--space-12) auto 0;padding-top:var(--space-6);border-top:1px solid var(--border-hairline-soft);font-size:var(--size-caption);color:var(--text-muted)">{{ footerLegal }}</div>
+  </footer>
+
+  <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Dialog" open="{{ hasSelectedMeeting }}" title="{{ selectedMeetingTitle }}" onClose="{{ closeMeetingDialog }}" footer="{{ dialogFooter }}" hint-size="480px,320px">
+    <sc-if value="{{ hasSelectedMeeting }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="aa-data" style="color:var(--text-ink)">{{ selectedMeetingWhen }}</div>
+        <div class="aa-body-md">{{ selectedMeetingFormat }}</div>
+        <div style="display:flex;gap:8px">
+          <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Badge" tone="open" hint-size="70px,28px">{{ labelOpen }}</x-import>
+          <x-import component-from-global-scope="GrupoGenteNuevaDesignSystem_6cf7e7.Badge" hint-size="50px,28px">ES</x-import>
+        </div>
+        <p class="aa-body-sm" style="color:var(--text-muted)">{{ selectedMeetingAddrNote }}</p>
+      </div>
+    </sc-if>
+  </x-import>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const DS_NS = 'GrupoGenteNuevaDesignSystem_6cf7e7';
+
+class Component extends DCLogic {
+  state = {
+    lang: 'es',
+    route: 'home',
+    autoAnswers: {},
+    autoStep: 'quiz',
+    day: 0,
+    query: '',
+    selectedMeeting: null,
+    modeIsPerson: true,
+    contactAgree: false,
+    contactSent: false
+  };
+
+  constructor(props) {
+    super(props);
+    this.weekMeetings = [
+      { time: '18:00', dur: '90 min' },
+      { time: '18:00', dur: '90 min' },
+      { time: '18:00', dur: '90 min' },
+      { time: '18:00', dur: '90 min' },
+      { time: '18:00', dur: '90 min' },
+      { time: '10:00', dur: '90 min' },
+      null
+    ];
+  }
+
+  go = (route) => this.setState((s) => ({
+    route, selectedMeeting: null,
+    ...(route !== 'autodiagnostico' ? { autoAnswers: {}, autoStep: 'quiz' } : {})
+  }));
+  toggleLang = () => this.setState((s) => ({ lang: s.lang === 'es' ? 'en' : 'es' }));
+  setQuery = (e) => this.setState({ query: e.target.value });
+  openMeeting = (m) => this.setState({ selectedMeeting: m });
+  closeMeetingDialog = () => this.setState({ selectedMeeting: null });
+  toggleAgree = () => this.setState((s) => ({ contactAgree: !s.contactAgree }));
+  sendMessage = () => { if (this.state.contactAgree) this.setState({ contactSent: true }); };
+  closeToast = () => this.setState({ contactSent: false });
+  setAutoAnswer = (i, val) => this.setState((s) => ({ autoAnswers: { ...s.autoAnswers, [i]: val } }));
+  showAutoResult = () => this.setState({ autoStep: 'result' });
+  resetAuto = () => this.setState({ autoStep: 'quiz', autoAnswers: {} });
+
+  renderVals() {
+    const { lang, route, day, query, selectedMeeting, modeIsPerson, contactAgree, contactSent, autoAnswers, autoStep } = this.state;
+    const autoYesCount = Object.values(autoAnswers).filter((v) => v === 'si').length;
+    const autoNoCount = Object.values(autoAnswers).filter((v) => v === 'no').length;
+    const es = lang === 'es';
+    const t = (a) => a;
+    const ds = (typeof window !== 'undefined' && window[DS_NS]) || {};
+    const { Button, Icon } = ds;
+
+    const daysLabel = es
+      ? ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
+      : ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+    const dayTags = daysLabel.map((label, i) => ({
+      label,
+      selected: i === day,
+      onClick: () => this.setState({ day: i, selectedMeeting: null })
+    }));
+
+    const wm = this.weekMeetings[day];
+    let dayMeeting = null;
+    if (wm) {
+      const candidate = {
+        time: wm.time,
+        dur: wm.dur,
+        name: t('Reunión Gente Nueva', 'Gente Nueva meeting'),
+        format: t('Reunión abierta', 'Open meeting'),
+        place: t('Salón principal (dirección de ejemplo)', 'Main room (sample address)')
+      };
+      if (!query.trim() || (candidate.name + candidate.format).toLowerCase().includes(query.toLowerCase())) {
+        dayMeeting = candidate;
+      }
+    }
+    const openMeetingFn = dayMeeting ? () => this.openMeeting(dayMeeting) : () => {};
+
+    const stepsList = Array.from({ length: 12 }, (_, i) => ({
+      n: String(i + 1).padStart(2, '0'),
+      text: i === 0
+        ? t('Admitimos que éramos impotentes ante el alcohol, que nuestras vidas se habían vuelto ingobernables.', 'We admitted we were powerless over alcohol, that our lives had become unmanageable.')
+        : i === 1
+        ? t('Llegamos a creer que un Poder superior a nosotros mismos podría devolvernos el sano juicio.', 'Came to believe that a Power greater than ourselves could restore us to sanity.')
+        : i === 2
+        ? t('Decidimos poner nuestras voluntades y nuestras vidas al cuidado de Dios, como nosotros lo concebimos.', 'Made a decision to turn our will and our lives over to the care of God as we understood Him.')
+        : i === 3
+        ? t('Sin miedo hicimos un minucioso inventario moral de nosotros mismos.', 'Made a searching and fearless moral inventory of ourselves.')
+        : i === 4
+        ? t('Admitimos ante Dios, ante nosotros mismos, y ante otro ser humano, la naturaleza exacta de nuestros defectos.', 'Admitted to God, to ourselves, and to another human being the exact nature of our wrongs.')
+        : i === 5
+        ? t('Estuvimos enteramente dispuestos a dejar que Dios nos liberase de todos estos defectos de carácter.', 'Were entirely ready to have God remove all these defects of character.')
+        : i === 6
+        ? t('Humildemente le pedimos que nos liberase de nuestros defectos.', 'Humbly asked Him to remove our shortcomings.')
+        : i === 7
+        ? t('Hicimos una lista de todas aquellas personas a quienes habíamos ofendido y estuvimos dispuestos a reparar el daño que les causamos.', 'Made a list of all persons we had harmed, and became willing to make amends to them all.')
+        : i === 8
+        ? t('Reparamos directamente a cuantos nos fue posible el daño causado, excepto cuando el hacerlo implicaba perjuicio para ellos o para otros.', 'Made direct amends to such people wherever possible, except when to do so would injure them or others.')
+        : i === 9
+        ? t('Continuamos haciendo nuestro inventario personal y cuando nos equivocábamos lo admitíamos inmediatamente.', 'Continued to take personal inventory and when we were wrong promptly admitted it.')
+        : i === 10
+        ? t('Buscamos a través de la oración y la meditación mejorar nuestro contacto consciente con Dios, como nosotros lo concebimos, pidiéndole solamente que nos dejase conocer su voluntad para con nosotros y nos diese la fortaleza para cumplirla.', 'Sought through prayer and meditation to improve our conscious contact with God, as we understood Him, praying only for knowledge of His will for us and the power to carry that out.')
+        : i === 11
+        ? t('Habiendo obtenido un despertar espiritual como resultado de estos pasos, tratamos de llevar este mensaje a otros alcohólicos y de practicar estos principios en todos nuestros asuntos.', 'Having had a spiritual awakening as the result of these steps, we tried to carry this message to alcoholics, and to practice these principles in all our affairs.')
+        : t(`Texto del paso ${i + 1} (resumen del grupo).`, `Text of step ${i + 1} (group summary).`)
+    }));
+
+    const faqList = [
+      { q: t('¿Qué es el alcoholismo?', 'Do I need to register or pay to attend?'),
+        a: t('El alcoholismo es una enfermedad progresiva que puede contenerse, aunque no curarse, caracterizada por una dependencia física y una obsesión por beber que no se supera únicamente con fuerza de voluntad. La recuperación es posible cuando existe un deseo sincero de dejar de beber y se acepta ayuda.\n', 'No. No appointment, registration or payment is required. Arrive a few minutes before the stated time.') },
+      { q: t('¿Qué es Alcohólicos Anónimos?', 'What is an open meeting?'),
+        a: t('A.A. es una comunidad de personas que comparten su experiencia, fortaleza y esperanza para recuperarse del alcoholismo y ayudar a otros. Es independiente de cualquier religión, partido u organización, y el único requisito para ser miembro es el deseo de dejar la bebida.\n', 'Anyone may attend, including family members, professionals or anyone curious about the programme.') },
+      { q: t('¿Si me hago miembro de AA, no lo sabrá enseguida todo el mundo?', 'Do I have to speak at my first meeting?'),
+        a: t('El anonimato es un principio fundamental de A.A. que protege la privacidad de todos sus miembros, especialmente de quienes recién llegan. Nadie tiene derecho a revelar la identidad o pertenencia de otra persona a A.A.; cada miembro decide por sí mismo a quién contarle sobre su participación.\n', 'No. You can just listen; no one is required to speak.') },
+      { q: t('¿Cuánto cuesta ser miembro de Alcohólicos Anónimos?', 'Is what is said in the meeting confidential?'),
+        a: t('Ser miembro de A.A. no tiene ningún costo y el programa está disponible para cualquier persona que desee dejar de beber. Los grupos se mantienen mediante contribuciones voluntarias de sus miembros, sin aceptar aportes externos.\n', 'Yes. What is said in the meeting stays in the meeting, and we do not use surnames or photographs.') },
+      { q: t('¿Hay muchas mujeres alcohólicas en Alcohólicos Anónimos?', "Can I attend if I'm not sure I have a drinking problem?"),
+        a: t('Cada vez más mujeres encuentran en A.A. apoyo para recuperarse del alcoholismo. A.A. no hace distinciones por género, edad, condición social, económica o educativa; cualquier mujer que tenga el deseo de dejar de beber puede encontrar comprensión, apoyo y una comunidad que comparte su misma experiencia.', 'Yes, to open meetings. Closed meetings are reserved for those who wish to stop drinking.') },
+      { q: t('¿Cómo hace una persona para entrar a Alcohólicos Anónimos?', 'Does the group offer medical treatment?'),
+        a: t('Para entrar a A.A. no es necesario inscribirse, pagar cuotas ni cumplir trámites: basta con acercarse y asistir a una reunión. El único requisito para ser miembro es el deseo de dejar la bebida, y cada persona decide libremente si A.A. es para ella.\n', 'No. The group does not provide medical treatment or professional counselling; the line is answered by a member of the group.') }
+    ];
+
+    const quickLinks = [
+      { icon: 'clock', title: t('Reuniones', 'Meetings'), body: t('Consulta días y horarios.', 'Check days and times.'), onClick: () => this.go('reuniones') },
+      { icon: 'message-circle', title: t('Nosotros', 'About'), body: t('Quiénes somos y cómo trabajamos.', 'Who we are and how we work.'), onClick: () => this.go('nosotros') },
+      { icon: 'map-pin', title: t('Ubicación', 'Location'), body: t('Cómo llegar al grupo.', 'How to find the group.'), onClick: () => this.go('ubicacion') }
+    ];
+
+    const findingCards = [
+      { icon: 'map-pin', title: t('Dirección', 'Address'), body: t('Av. 12 de octubre y Roca, edificio Mariana de Jesús, piso 7.  Referencia: Frente a la entrada principal de la PUCE', "123 Example Street, city centre. Replace with the group's real address.") },
+      { icon: 'clock', title: t('Horario de puerta', 'Door hours'), body: t('Abrimos 30 minutos antes de cada reunión.', 'We open 30 minutes before each meeting.') },
+      { icon: 'accessibility', title: t('Accesibilidad', 'Accessibility'), body: t('El edificio cuenta con elevador. ', 'Ground floor, step-free. Accessible restrooms.') }
+    ];
+
+    const contactFacts = [
+      { k: t('Teléfono', 'Phone'), v: '+593 963464752' }
+    ];
+
+    const footerCols = es
+      ? [{ title: 'Reuniones', links: [
+            { label: 'Horarios', onClick: () => this.go('reuniones') },
+            { label: 'Ubicación', onClick: () => this.go('ubicacion') },
+            { label: 'Preguntas frecuentes', onClick: () => this.go('preguntas') }
+          ] },
+         { title: 'El grupo', links: [
+            { label: 'Nosotros', onClick: () => this.go('nosotros') },
+            { label: 'Testimonios', onClick: () => this.go('blog') },
+            { label: 'Contacto', onClick: () => this.go('ubicacion') }
+          ] }]
+      : [{ title: 'Meetings', links: [
+            { label: 'Schedule', onClick: () => this.go('reuniones') },
+            { label: 'Location', onClick: () => this.go('ubicacion') },
+            { label: 'FAQ', onClick: () => this.go('preguntas') }
+          ] },
+         { title: 'The group', links: [
+            { label: 'About', onClick: () => this.go('nosotros') },
+            { label: 'Twelve Steps', onClick: () => this.go('nosotros') },
+            { label: 'Blog', onClick: () => this.go('blog') },
+            { label: 'Contact', onClick: () => this.go('ubicacion') }
+          ] }];
+
+    const selWhen = selectedMeeting ? `${daysLabel[day]} · ${selectedMeeting.time} · ${selectedMeeting.dur}` : '';
+    const dialogFooter = Button
+      ? React.createElement(React.Fragment, null,
+          React.createElement(Button, { variant: 'secondary', onClick: this.closeMeetingDialog }, t('Cerrar', 'Close')),
+          React.createElement(Button, { iconLeft: Icon ? React.createElement(Icon, { name: 'map-pin', size: 18, color: '#fff' }) : null }, t('Cómo llegar', 'Directions'))
+        )
+      : null;
+
+    const navLinksRaw = [
+      { value: 'home', label: t('Inicio', 'Home') },
+      { value: 'nosotros', label: t('Quienes Somos', 'About') },
+      { value: 'autodiagnostico', label: t('Autoevaluación', 'Self-assessment') },
+      { value: 'blog', label: t('Testimonios', 'Testimonials') },
+      { value: 'ubicacion', label: t('Encuéntranos', 'Find us') },
+      { value: 'preguntas', label: t('Preguntas Frecuentes', 'FAQ') }
+    ];
+
+    return {
+      lang, route, query, contactAgree, contactSent,
+      langCode: es ? 'ES' : 'EN',
+      go: this.go, goReuniones: () => this.go('reuniones'), goContacto: () => this.go('ubicacion'), goPreguntas: () => this.go('preguntas'),
+      goNosotros: () => this.go('nosotros'),
+      goAutodiagnostico: () => this.go('autodiagnostico'),
+      toggleLang: this.toggleLang, setQuery: this.setQuery,
+      isHome: route === 'home', isReuniones: route === 'reuniones', isNosotros: route === 'nosotros',
+      isPreguntas: route === 'preguntas', isUbicacion: route === 'ubicacion', isBlog: route === 'blog', isContacto: route === 'ubicacion',
+      isAutodiagnostico: route === 'autodiagnostico',
+
+      navLinks: navLinksRaw.map(l => ({
+        label: l.label, onClick: () => this.go(l.value),
+        weight: l.value === route ? 600 : 500,
+        color: l.value === route ? 'var(--text-brand)' : 'var(--text-body)',
+        border: l.value === route ? '2px solid var(--color-primary)' : '2px solid transparent'
+      })),
+      goHomeNav: (e) => { e.preventDefault(); this.go('home'); },
+      helpCta: t('Necesito ayuda', 'I need help'),
+      openWhatsapp: () => window.open('https://wa.me/593963464752', '_blank'),
+
+      homeEyebrow: t('Grupo Gente Nueva', 'Gente Nueva Group'),
+      homeTitleLine1: t('Un lugar para dejar de beber,', 'A place to stop drinking,'),
+      homeTitleLine2: t('un día a la vez', 'one day at a time'),
+      homeLede: t('Somos un grupo de Alcohólicos Anónimos en Quito. Nuestro propósito principal es mostrarles a otros alcohólicos precisamente como nos hemos recuperado. ', 'We are a local group of Alcoholics Anonymous. We meet to share our experience and help each other stay sober.'),
+      ctaSchedule: t('Ver horario', 'See schedule'),
+      ctaFullSchedule: t('Ver horario completo', 'See full schedule'),
+      ctaFaq: t('Ver preguntas frecuentes', 'See FAQ'),
+      homeStats: [
+        { k: t('Reuniones por semana', 'Meetings per week'), v: '6' },
+        { k: t('Costo', 'Cost'), v: t('Ninguno', 'None') },
+        { k: t('Idioma', 'Language'), v: 'ES' }
+      ],
+      homeQuickTitle: t('Cómo empezar', 'How to start'),
+      quickLinks,
+      homeScheduleEyebrow: t('Horario', 'Schedule'),
+      homeScheduleTitle: t('Reuniones continuas', 'Meetings all week'),
+      weekSummary: [
+        { days: t('Lunes a viernes', 'Monday to Friday'), hours: '18:00 – 19:30' },
+        { days: t('Sábados', 'Saturdays'), hours: '10:00 – 11:30' }
+      ],
+      dailyReflectionLabel: t('Reflexión \n', 'Daily reflection'),
+      dailyReflectionBody: t('A veces pensamos en dejar de beber para siempre y la idea parece imposible. En A.A. aprendemos a concentrarnos en algo mucho más pequeño: hoy. Porque para llegar al décimo trago primero tiene que existir el primero.\n', 'A short reading, different each day, shared at the start of the meeting.'),
+      homeClosingTitle: t('¿Es tu primera vez?', 'Is this your first time?'),
+      homeClosingLede: t('Te sugerimos leer las preguntas frecuentes antes de venir. Esta es una comunidad en la que compartimos nuestra experiencia, fortaleza y esperanza para recuperarnos del alcoholismo. ', 'Read the FAQ before coming, or just show up: no one will ask you to introduce yourself.'),
+
+      eyebrowGroup: t('Grupo Gente Nueva', 'Gente Nueva Group'),
+      meetingsTitle: t('Reuniones continuas', 'Meetings every day of the week'),
+      meetingsLede: t('El único requisito para ser miembros de Alcohólicos Anónimos es el deseo de dejar la bebida. ', 'No appointment, registration or payment is required. Arrive a few minutes early and ask for the meeting secretary.'),
+      scheduleTitle: t('Horario', 'Schedule'),
+      scheduleNote: t('Horario local.', 'Local time.'),
+      searchPlaceholder: t('Buscar reunión', 'Search meetings'),
+      dayTags, hasDayMeeting: !!dayMeeting, hasNoDayMeeting: !dayMeeting,
+      dayMeeting: dayMeeting || { time: '', dur: '', name: '', format: '', place: '' },
+      openMeeting: openMeetingFn,
+      labelOpen: t('Abierta', 'Open'),
+      noMeetingsText: day === 6
+        ? t('El grupo está cerrado los domingos.', 'The group is closed on Sundays.')
+        : t('No hay reuniones que coincidan con el filtro.', 'No meetings match this filter.'),
+      openTitle: t('Reunión abierta', 'Open meeting'),
+      openBody: t('Las reuniones están dirigidas a todas las personas que tienen un interés en el programa de recuperación del alcoholismo de Alcohólicos Anónimos. Personas no alcohólicas pueden asistir a las reuniones abiertas como observadores. ', 'Anyone may attend, including family members, professionals and anyone curious about the programme.'),
+      closedTitle: t('Reunión cerrada', 'Closed meeting'),
+      closedBody: t('', 'Reserved for those who have a drinking problem and wish to stop drinking.'),
+
+      eyebrowAbout: t('El grupo', 'The group'),
+      aboutTitle: t('Quiénes somos', 'Who we are'),
+      ctaAboutMore: t('Conocer más sobre el grupo', 'Learn more about the group'),
+      aboutLede: t('Gente Nueva es un grupo de Alcohólicos Anónimos establecido en Quito desde 1982, con más de cuatro décadas llevando el mensaje de recuperación a quienes buscan una manera de dejar de beber. Formamos parte de la Corporación de Alcohólicos Anónimos del Ecuador, organización legalmente constituida en el país e integrante de Servicios Mundiales de Alcohólicos Anónimos. Nuestro grupo se guía por los principios, las Tradiciones y el programa de recuperación de Alcohólicos Anónimos, manteniendo su compromiso de ofrecer un espacio seguro y confidencial donde las personas puedan compartir su experiencia, fortaleza y esperanza. Nuestro propósito primordial es llevar el mensaje de A.A. a la persona que aún sufre por su manera de beber.', 'Gente Nueva is a local group of Alcoholics Anonymous: a community of people who share their experience to stop drinking and help one another. We charge no dues and do no proselytising; the group is supported by the voluntary contributions of its own members.'),
+      stepsTitle: t('Los Doce Pasos', 'The Twelve Steps'),
+      stepsLede: t('Son un conjunto de principios de naturaleza espiritual que, si se adoptan como una forma de vida, puede liberar al enfermo de la obsesión por beber y transformarle en un ser íntegro, útil y feliz. ', 'The steps are studied in order in discussion meetings. If you are attending for the first time, listen; no one is required to speak.'),
+      stepsList,
+      traditionsTitle: t('Las Doce Tradiciones', 'The Twelve Traditions'),
+      traditionsLede: t('Guían cómo se organiza el grupo y cómo se relaciona con el exterior.', 'They guide how the group organizes itself and relates to the outside.'),
+      traditionsList: [
+        t('Nuestro bienestar común debe tener la preferencia; la recuperación personal depende de la unidad de A.A.', 'Unity. Our common welfare should come first; personal recovery depends upon A.A. unity.'),
+        t('Para el propósito de nuestro grupo solo existe una autoridad fundamental: un Dios amoroso tal como se exprese en la conciencia de nuestros grupos. Nuestros líderes no son más que servidores de confianza; no gobiernan. ', 'Group conscience. For our group purpose there is but one ultimate authority — a loving God as He may express Himself in our group conscience. Our leaders are but trusted servants; they do not govern.'),
+        t('El único requisito para ser miembro de A.A. es querer dejar de beber.', 'Membership. The only requirement for A.A. membership is a desire to stop drinking.'),
+        t('Cada grupo debe ser autónomo, excepto en asuntos que afecten a otros grupos o a Alcohólicos Anónimos considerado como un todo.  ', 'Autonomy. Each group should be autonomous except in matters affecting other groups or A.A. as a whole.'),
+        t('Cada grupo tiene un solo objetivo primordial- llevar el mensaje al alcohólico que aún esta sufriendo. ', 'Primary purpose. Each group has but one primary purpose — to carry its message to the alcoholic who still suffers.'),
+        t('Un grupo de A.A. nunca debe respaldar, financiar o prestar el nombre de A.A. a ninguna entidad allegada o empresa ajena, para evitar que los problemas de dinero, propiedad y prestigio nos desvíen de nuestro objetivo primordial. ', 'Non-affiliation. An A.A. group ought never endorse, finance, or lend the A.A. name to any related facility or outside enterprise, lest problems of money, property, and prestige divert us from our primary purpose.'),
+        t('Cada grupo de A.A. debe mantenerse completamente a sí mismo, negándose a recibir contribuciones de afuera. ', 'Self-support. Every A.A. group ought to be fully self-supporting, declining outside contributions.'),
+        t('Alcohólicos Anónimos nunca tendrá carácter profesional, pero nuestros centros de servicio pueden emplear trabajadores especiales. ', 'Non-professionalism. Alcoholics Anonymous should remain forever non-professional, but our service centers may employ special workers.'),
+        t('A.A. como tal nunca debe ser organizada; pero podemos crear juntas o comités de servicio que sean directamente responsables ante aquellos a quienes sirven. ', 'Service, not government. A.A., as such, ought never be organized, but we may create service boards or committees directly responsible to those they serve.'),
+        t('Alcohólicos Anónimos no tiene opinión acerca de asuntos ajenos a sus actividades; por consiguiente su nombre nunca debe mezclarse en polémicas públicas. ', 'Neutrality. Alcoholics Anonymous has no opinion on outside issues; hence the A.A. name ought never be drawn into public controversy.'),
+        t('Nuestra política de relaciones públicas se basa más bien en la atracción que en la promoción; necesitamos mantener siempre nuestro anonimato personal ante la prensa, la radio y el cine. ', 'Attraction, not promotion. Our public relations policy is based on attraction rather than promotion; we need always maintain personal anonymity at the level of press, radio, and films.'),
+        t('El anonimato es la base espiritual de todas nuestras tradiciones recordándonos siempre anteponer los principios a las personalidades. ', 'Anonymity and humility. Anonymity is the spiritual foundation of all our Traditions, ever reminding us to place principles before personalities.')
+      ].map((text, i) => ({ n: String(i + 1).padStart(2, '0'), text })),
+      calloutAnonTitle: t('Anonimato', 'Anonymity'),
+      calloutAnonBody: t('El anonimato proporciona protección para todos los miembros, evitando su identificación como alcohólicos; por tal motivo no publicamos nombres ni fotografías de los miembros.', 'Anonymity protects all members by avoiding their identification as alcoholics; for this reason we do not publish names or photographs of members.'),
+      calloutServiceTitle: t('Servicio', 'Service'),
+      calloutServiceBody: t('El grupo funciona gracias al servicio voluntario y rotativo de sus propios miembros.', 'The group runs on the voluntary, rotating service of its own members.'),
+      calloutTraditionsTitle: t('Doce Tradiciones', 'Twelve Traditions'),
+      calloutTraditionsBody: t('Las tradiciones guían cómo se organiza el grupo y cómo se relaciona con el exterior.', 'The traditions guide how the group organises itself and relates to the outside world.'),
+
+      eyebrowFaq: t('Para quien llega por primera vez', 'For newcomers'),
+      faqTitle: t('Preguntas frecuentes', 'Frequently asked questions'),
+      faqLede: t('Lo que suele preguntarse antes de asistir a una primera reunión.', 'What people usually ask before attending a first meeting.'),
+      faqList,
+
+      eyebrowUbicacion: t('Cómo llegar', 'Finding us'),
+      ubicacionTitle: t('Ubicación', 'Location'),
+      ubicacionLede: t('El grupo se reúne siempre en el mismo lugar. La dirección exacta se muestra abajo.', 'The group always meets in the same place. The exact address is shown below.'),
+      mapPlaceholderText: t('Mapa de ejemplo — sustituir con la ubicación real del grupo.', 'Sample map — replace with the group\'s real location.'),
+      findingCards,
+
+      eyebrowBlog: t('Blog', 'Blog'),
+      blogTitle: t('Nuestro modo de vivir ', 'Testimonials and writings'),
+      blogLede: t('Reflexiones que miembros del grupo comparten por escrito. Se publican solo con el nombre de pila del autor, o de forma anónima.', 'Reflections that members of the group share in writing. They are published with the author\'s first name only, or anonymously.'),
+      blogPosts: [
+        { title: t('Un día a la vez', 'One day at a time'), author: t('Ana, 2 años sobria', 'Ana, 2 years sober'), date: '3 de agosto de 2026', excerpt: t('Cuando llegué al grupo no creía que pudiera cambiar. Escuchar a otros contar lo mismo que yo sentía fue lo primero que me hizo quedarme.', 'When I arrived at the group I did not believe I could change. Hearing others describe what I felt was the first thing that made me stay.') },
+        { title: t('Lo que aprendí del primer paso', 'What I learned from the first step'), author: t('Un miembro del grupo', 'A member of the group'), date: '22 de julio de 2026', excerpt: t('Aceptar que no podía controlarlo solo fue más difícil que dejar de beber. El grupo me mostró que no tenía que hacerlo solo.', 'Accepting that I could not control it alone was harder than stopping drinking. The group showed me I did not have to do it alone.') },
+        { title: t('Gratitud', 'Gratitude'), author: t('Miguel', 'Miguel'), date: '5 de julio de 2026', excerpt: t('Este mes cumplo un año en el grupo. Escribo esto para el que llega hoy con miedo: se puede.', 'This month marks a year in the group. I write this for whoever arrives today afraid: it is possible.') }
+      ],
+      blogSubmitTitle: t('¿Quieres compartir un escrito?', 'Want to share a writing?'),
+      blogSubmitBody: t('Se revisa en grupo antes de publicarse, y nunca se incluyen apellidos ni fotografías.', 'It is reviewed by the group before publishing, and surnames or photographs are never included.'),
+      ctaSubmitWriting: t('Escribir al grupo', 'Write to the group'),
+      submitWritingButton: Button ? React.createElement(Button, { variant: 'outline', onClick: () => this.go('contacto') }, t('Escribir al grupo', 'Write to the group')) : null,
+      eyebrowHelp: t('Ayuda ahora', 'Help now'),
+      contactTitle: t('Habla con un miembro del grupo', 'Talk to a member of the group'),
+      contactLede: t('La línea la atiende un miembro del grupo, no un profesional. La llamada es confidencial y no se registra ningún dato.', 'The line is answered by a member of the group, not a professional. The call is confidential and no data is recorded.'),
+      phonePlaceholder: '800 000 0000',
+      ctaWrite: t('Escribir al grupo', 'Write to the group'),
+      phoneIcon: Icon ? React.createElement(Icon, { name: 'phone', size: 18, color: '#fff' }) : null,
+      messageIcon: Icon ? React.createElement(Icon, { name: 'message-circle', size: 18 }) : null,
+      contactFacts,
+      waLink: 'https://wa.me/593963464752',
+      formTitle: t('Enviar un mensaje', 'Send a message'),
+      labelFirstName: t('Nombre de pila', 'First name'),
+      placeholderFirstName: t('Solo tu nombre', 'Your first name only'),
+      labelContact: t('Teléfono o correo', 'Phone or email'),
+      labelReason: t('Motivo', 'Reason'),
+      contactReasons: es
+        ? ['Quiero asistir a una reunión', 'Pregunto por un familiar', 'Soy profesional de la salud', 'Otro']
+        : ['I want to attend a meeting', 'I am asking about a relative', 'I am a health professional', 'Other'],
+      modeInPerson: t('Presencial', 'In person'), modeOnline: t('En línea', 'Online'),
+      modeIsPerson, modeIsOnline: !modeIsPerson,
+      setModePerson: () => this.setState({ modeIsPerson: true }),
+      setModeOnline: () => this.setState({ modeIsPerson: false }),
+      agreeLabel: t('Entiendo que el grupo no ofrece tratamiento médico.', 'I understand the group does not provide medical treatment.'),
+      toggleAgree: this.toggleAgree,
+      sendDisabled: !contactAgree,
+      sendMessage: this.sendMessage,
+      ctaSend: t('Enviar', 'Send'),
+      sentMessage: t('Mensaje enviado. Te responderemos pronto.', 'Message sent. We will reply soon.'),
+      closeToast: this.closeToast,
+
+      footerHelpline: t('Línea de ayuda: +593 963464752', 'Helpline: +593 963464752'),
+      footerAddress: t('Dirección: Av. 12 de octubre y Roca, edificio Mariana de Jesús, piso 7.', 'Av. 12 de octubre y Roca, Mariana de Jesús building, 7th floor.'),
+      footerCols,
+      footerLegal: t('Grupo Gente Nueva · Alcohólicos Anónimos. Contenido informativo del grupo; no representa a A.A. en su conjunto.', 'Grupo Gente Nueva · Alcoholics Anonymous. Group information only; it does not speak for A.A. as a whole.'),
+
+      hasSelectedMeeting: !!selectedMeeting,
+      selectedMeetingTitle: selectedMeeting ? selectedMeeting.name : '',
+      selectedMeetingWhen: selWhen,
+      selectedMeetingFormat: selectedMeeting ? `${selectedMeeting.format} · ${selectedMeeting.place}` : '',
+      selectedMeetingAddrNote: t('Dirección de ejemplo · sustituir por la del grupo.', "Sample address · replace with the group's own."),
+      closeMeetingDialog: this.closeMeetingDialog,
+      dialogFooter,
+
+      eyebrowAuto: t('Recurso', 'Resource'),
+      resourceTitle: t('Autoevaluación de AA', 'AA self-assessment'),
+      resourceBody: t('Un cuestionario para ayudarte a reflexionar sobre si tienes un problema con la bebida.', 'A questionnaire to help you reflect on whether you have a problem with drinking.'),
+      resourceLinkLabel: t('Descargar PDF', 'Download PDF'),
+
+      autoTitle: t('¿Es A.A. para usted? Una autoevaluación', 'Is this for you? A self-assessment'),
+      autoSubtitle: t('Doce preguntas que solo usted puede contestar', 'Twelve questions only you can answer'),
+      autoInstruction: t('Responda SÍ o NO a las siguientes preguntas.', 'Answer YES or NO to the following questions.'),
+      autoIntro: t('Solo usted puede decidir si quiere probar esto, si cree que puede ayudarle. A continuación hay algunas preguntas que le pedimos responder sinceramente. No debería darle vergüenza reconocer que tiene un problema.', 'Only you can decide whether you want to try this, whether you think it can help you. Below are some questions we ask you to answer honestly. You should not be ashamed to admit that you have a problem.'),
+      labelSi: t('Sí', 'Yes'),
+      labelNo: t('No', 'No'),
+      autoFirstQuestion: t('¿Ha tratado alguna vez de dejar de beber durante una semana o más, sin haber podido cumplir el plazo?', 'Have you ever tried to stop drinking for a week or more, without being able to keep the deadline?'),
+      goHome: () => this.go('home'),
+      backToTopLabel: t('Volver al principio', 'Back to top'),
+      autoAttribution: t('Este cuestionario está basado en el material de autoevaluación de Alcohólicos Anónimos (A.A.), disponible en aa.org.', 'This questionnaire is based on the self-assessment material from Alcoholics Anonymous (A.A.), available at aa.org.'),
+      viewResultLabel: t('Ver resultado', 'See result'),
+      showAutoResult: this.showAutoResult,
+      autoShowQuiz: autoStep === 'quiz', autoShowResult: autoStep === 'result',
+      autoYesCount, autoNoCount,
+      autoResultTitle: t('Su resultado', 'Your result'),
+      autoResultQ: t('¿Contestó que SÍ cuatro o más veces?', 'Did you answer YES four or more times?'),
+      autoResultP1: t('Si es así, probablemente tenga problemas con el alcohol. ¿Por qué decimos esto? Porque miles de personas en A.A. han dicho exactamente eso durante muchos años. Descubrieron la verdad sobre sí mismos, de la forma más dura.', 'If so, you probably have a problem with alcohol. Why do we say this? Because thousands of people in A.A. have said exactly that for many years. They discovered the truth about themselves, the hard way.'),
+      autoResultP2: t('Pero en realidad solamente usted puede decidir si cree que A.A. es para usted. Trate de mantener la mente abierta. Si su respuesta es SÍ, con gusto le enseñaremos cómo hicimos para dejar de beber. Simplemente llámenos.', 'But in reality only you can decide whether you think A.A. is for you. Try to keep an open mind. If your answer is YES, we will gladly show you how we managed to stop drinking. Simply call us.'),
+      autoResultP3: t('A.A. no promete que va a resolver todos sus problemas. Pero le podemos mostrar cómo estamos aprendiendo a vivir sin beber "un día a la vez". Nos mantenemos alejados del "primer trago". Y sin ese primer trago, no puede haber un décimo. Cuando nos deshicimos del alcohol, descubrimos que la vida se volvía mucho más manejable.', 'A.A. does not promise to solve all your problems. But we can show you how we are learning to live without drinking "one day at a time". We stay away from the "first drink". And without that first drink, there cannot be a tenth. When we got rid of alcohol, we discovered that life became much more manageable.'),
+      autoNextStepTitle: t('Dé el siguiente paso.', 'Take the next step.'),
+      autoNextStepCta: t('Contáctenos', 'Contact us'),
+      goContacto: () => this.go('ubicacion'),
+      ctaAutoStart: t('Hacer la autoevaluación', 'Take the self-assessment'),
+      autoQuestions: [
+        t('¿Ha tratado alguna vez de dejar de beber durante una semana o más, sin haber podido cumplir el plazo?', 'Have you ever tried to stop drinking for a week or more, without being able to keep to it?'),
+        t('¿Le fastidian los consejos de otras personas en cuanto a su forma de beber, le gustaría que dejasen de entrometerse en sus asuntos?', 'Are you annoyed by advice from others about your drinking, and wish they would stop interfering?'),
+        t('¿Ha cambiado de una clase de bebida a otra con objeto de evitar emborracharse?', 'Have you switched from one kind of drink to another to avoid getting drunk?'),
+        t('¿Se ha tenido que tomar algún trago al levantarse por la mañana durante el año pasado?', 'Have you had to have a drink upon awakening during the past year?'),
+        t('¿Tiene envidia de las personas que pueden beber sin meterse en líos?', 'Do you envy people who can drink without getting into trouble?'),
+        t('¿Ha tenido algún problema relacionado con la bebida durante el año pasado?', 'Have you had a problem related to drinking during the past year?'),
+        t('¿Ha causado su forma de beber dificultades en casa?', 'Has your drinking caused difficulties at home?'),
+        t('¿Trata usted de conseguir tragos "extras" en las fiestas, por temor de no tener suficiente?', 'Do you try to get extra drinks at parties, for fear of not having enough?'),
+        t('¿Persiste usted en decir que puede dejar de beber en el momento que quiera, a pesar de que sigue emborrachándose cuando no quiere?', 'Do you insist you can stop drinking anytime you want, even though you keep getting drunk when you do not want to?'),
+        t('¿Ha faltado a su trabajo o a la escuela a causa de la bebida?', 'Have you missed work or school because of drinking?'),
+        t('¿Ha tenido "lagunas mentales"?', 'Have you had blackouts?'),
+        t('¿Ha pensado que llevaría una vida mejor si no bebiera?', 'Have you thought that you would lead a better life if you did not drink?')
+      ].map((text, i) => ({
+        n: String(i + 1).padStart(2, '0'),
+        text,
+        name: `auto-q${i}`,
+        isYes: autoAnswers[i] === 'si',
+        isNo: autoAnswers[i] === 'no',
+        onYes: () => this.setAutoAnswer(i, 'si'),
+        onNo: () => this.setAutoAnswer(i, 'no')
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

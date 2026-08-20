@@ -1,0 +1,9 @@
+:root{
+/* One shadow tier only. Depth otherwise comes from hairlines and card-on-card layering. */
+--shadow-none:none;--shadow-soft:0 4px 14px rgba(15,18,51,.07);--shadow-raised:0 10px 30px rgba(15,18,51,.12);
+--focus-ring:0 0 0 3px rgba(47,47,128,.28);
+--motion-fast:120ms;/* @kind other */
+--motion-base:200ms;/* @kind other */
+--motion-slow:320ms;/* @kind other */
+--ease-standard:cubic-bezier(.2,0,.2,1);/* @kind other */
+}

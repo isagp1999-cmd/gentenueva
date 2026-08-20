@@ -1,0 +1,23 @@
+:root{
+/* Brand navy — sampled from the AA circle-and-triangle mark */
+--navy-900:#0f1233;--navy-800:#171b47;--navy-700:#232268;--navy-600:#2f2f80;--navy-500:#4a4a9e;
+--navy-100:#e8e9f4;--navy-050:#f4f5fa;
+/* Neutrals */
+--white:#ffffff;--gray-050:#f6f7fa;--gray-100:#eceef3;--gray-200:#dcdee6;--gray-400:#a3a7b5;--gray-600:#7b7f8e;--gray-800:#4e5261;--gray-900:#16182b;
+/* Restrained accents */
+--gold-600:#a97f2b;--gold-100:#f7f0e0;--green-700:#1f7a4d;--red-700:#a32020;
+/* Semantic — surfaces */
+--surface-canvas:var(--white);--surface-soft:var(--gray-050);--surface-strong:var(--navy-100);--surface-card:var(--white);
+--surface-dark:var(--navy-900);--surface-dark-elevated:var(--navy-800);
+/* Semantic — text */
+--text-ink:var(--gray-900);--text-body:var(--gray-800);--text-muted:var(--gray-600);--text-disabled:var(--gray-400);
+--text-brand:var(--navy-700);--text-on-primary:var(--white);--text-on-dark:var(--white);--text-on-dark-soft:#b9bcd4;
+/* Semantic — action */
+--color-primary:var(--navy-700);--color-primary-active:var(--navy-900);--color-primary-disabled:#b6b8d3;
+--color-link:var(--navy-700);--color-link-hover:var(--navy-900);
+--color-focus:var(--navy-600);
+/* Semantic — borders */
+--border-hairline:var(--gray-200);--border-hairline-soft:var(--gray-100);--border-strong:var(--navy-700);
+/* Semantic — status (text/edge only, never as a fill for actions) */
+--status-open:var(--green-700);--status-closed:var(--red-700);--status-note:var(--gold-600);
+}
