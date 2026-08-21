@@ -68,33 +68,49 @@
       </div>
       <div class="card card-dark card-elevated" style="padding:32px">
         <h2 class="aa-display-sm" style="color:var(--text-on-dark);margin:0 0 24px">Enviar un mensaje</h2>
-        <form id="contact-form" style="display:flex;flex-direction:column;gap:20px">
+        <form id="contact-form" action="https://formspree.io/f/xkjwyvoo" method="POST" style="display:flex;flex-direction:column;gap:20px">
           <div class="field field-dark">
             <label for="first-name">Nombre de pila</label>
-            <input type="text" id="first-name" placeholder="Solo tu nombre">
+            <input type="text" id="first-name" name="nombre" placeholder="Solo tu nombre" autocomplete="given-name" required>
           </div>
           <div class="field field-dark">
             <label for="contact-info">Teléfono o correo</label>
-            <input type="text" id="contact-info" placeholder="800 000 0000">
+            <!-- Deliberately type="text": this one field accepts a phone number
+                 OR an email, so type="email" would reject valid phone entries. -->
+            <input type="text" id="contact-info" name="telefono-o-correo" placeholder="800 000 0000" required>
           </div>
           <div class="field field-dark">
             <label for="reason">Motivo</label>
-            <select id="reason">
+            <select id="reason" name="motivo">
               <option>Quiero asistir a una reunión</option>
               <option>Pregunto por un familiar</option>
               <option>Soy profesional de la salud</option>
               <option>Otro</option>
             </select>
           </div>
+          <div class="field field-dark">
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="mensaje" rows="4" maxlength="2000" placeholder="Cuéntanos brevemente en qué podemos ayudarte."></textarea>
+          </div>
           <label class="checkbox-row checkbox-row-dark">
-            <input type="checkbox" id="agree">
+            <!-- No `required` here: the real control is visually hidden, and a
+                 required control the browser cannot focus blocks submission.
+                 The submit button is already gated on this box being checked. -->
+            <input type="checkbox" id="agree" name="acepta-condiciones" value="Sí">
             <span class="checkbox-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#171b47" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
             <span class="checkbox-label">Entiendo que el grupo no ofrece tratamiento médico.</span>
           </label>
+          <input type="hidden" name="_subject" value="Nuevo mensaje desde grupogentenueva.org">
+          <!-- Formspree honeypot: bots fill it, people never see it. -->
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
           <button type="submit" class="btn btn-full" id="send-btn" disabled>Enviar</button>
-          <div id="sent-toast" class="toast" style="display:none">
+          <div id="sent-toast" class="toast" style="display:none" role="status" aria-live="polite">
             <span>Mensaje enviado. Te responderemos pronto.</span>
             <button type="button" id="close-toast" aria-label="Cerrar">×</button>
+          </div>
+          <div id="error-toast" class="toast toast-error" style="display:none" role="alert">
+            <span>No se pudo enviar el mensaje. Vuelve a intentarlo, o escríbenos por WhatsApp al +593 963464752.</span>
+            <button type="button" id="close-error" aria-label="Cerrar">×</button>
           </div>
         </form>
       </div>
