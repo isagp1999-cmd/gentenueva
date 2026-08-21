@@ -191,12 +191,14 @@ a:hover{color:var(--color-link-hover);text-decoration-thickness:2px}
 .contact-pill:hover{color:var(--text-on-dark)}
 .contact-pill svg{flex-shrink:0}
 
-/* ---- Principles list (Twelve Steps / Twelve Traditions) ---- */
+/* ---- Hairline-divided lists (Twelve Steps, Twelve Traditions, FAQ) ---- */
 /* Hover lifts the row onto the system's single shadow tier. Padding and text
    position are unchanged, so the resting layout is identical. */
-.principle-row{display:flex;gap:var(--space-6);padding:var(--space-4) 0;border-top:1px solid var(--border-hairline);border-radius:var(--radius-md);transition:background var(--motion-fast) var(--ease-standard),box-shadow var(--motion-fast) var(--ease-standard),border-color var(--motion-fast) var(--ease-standard)}
+.principle-row,.faq-row{border-top:1px solid var(--border-hairline);border-radius:var(--radius-md);transition:background var(--motion-fast) var(--ease-standard),box-shadow var(--motion-fast) var(--ease-standard),border-color var(--motion-fast) var(--ease-standard)}
+.principle-row{display:flex;gap:var(--space-6);padding:var(--space-4) 0}
+.faq-row{padding:var(--space-6) 0}
 @media (hover:hover){
-  .principle-row:hover{background:var(--surface-canvas);box-shadow:var(--shadow-soft);border-top-color:transparent}
+  .principle-row:hover,.faq-row:hover{background:var(--surface-canvas);box-shadow:var(--shadow-soft);border-top-color:transparent}
 }
 
 /* ---- Mobile navigation drawer ---- */
