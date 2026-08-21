@@ -177,8 +177,18 @@ a:hover{color:var(--color-link-hover);text-decoration-thickness:2px}
 .footer-legal{max-width:var(--container-max);margin:var(--space-12) auto 0;padding-top:var(--space-6);border-top:1px solid var(--border-hairline-soft);font-size:var(--size-caption);color:var(--text-muted)}
 
 /* ---- Contact pill ---- */
-.contact-pill{display:inline-block;color:var(--text-on-dark);background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:100px;padding:12px 28px;font-size:18px;text-decoration:none}
+/* inline-flex so the WhatsApp mark sits on the number's baseline row. */
+.contact-pill{display:inline-flex;align-items:center;gap:var(--space-2);color:var(--text-on-dark);background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:100px;padding:12px 28px;font-size:18px;text-decoration:none}
 .contact-pill:hover{color:var(--text-on-dark)}
+.contact-pill svg{flex-shrink:0}
+
+/* ---- Principles list (Twelve Steps / Twelve Traditions) ---- */
+/* Hover lifts the row onto the system's single shadow tier. Padding and text
+   position are unchanged, so the resting layout is identical. */
+.principle-row{display:flex;gap:var(--space-6);padding:var(--space-4) 0;border-top:1px solid var(--border-hairline);border-radius:var(--radius-md);transition:background var(--motion-fast) var(--ease-standard),box-shadow var(--motion-fast) var(--ease-standard),border-color var(--motion-fast) var(--ease-standard)}
+@media (hover:hover){
+  .principle-row:hover{background:var(--surface-canvas);box-shadow:var(--shadow-soft);border-top-color:transparent}
+}
 
 /* ---- Mobile navigation drawer ---- */
 /* Hidden on desktop; the toggle is revealed at the 900px breakpoint below. */
