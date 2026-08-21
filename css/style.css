@@ -109,6 +109,9 @@ a:hover{color:var(--color-link-hover);text-decoration-thickness:2px}
 .btn-lg{height:var(--control-height-lg);padding:0 32px;font-size:var(--size-body-lg)}
 .btn-outline{background:transparent;color:var(--text-brand);border-color:var(--border-strong)}
 .btn-outline:hover{background:var(--surface-strong)}
+/* Without this, .btn:visited above wins on specificity and paints the label
+   white on the transparent fill — an invisible label inside a visible pill. */
+.btn-outline:visited{color:var(--text-brand)}
 .btn-outline-on-dark{background:transparent;color:var(--text-on-dark);border-color:rgba(255,255,255,.55)}
 .btn-outline-on-dark:hover{background:rgba(255,255,255,.1)}
 .btn-outline-on-dark:visited{color:var(--text-on-dark)}
